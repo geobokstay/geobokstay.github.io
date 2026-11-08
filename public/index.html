@@ -162,27 +162,37 @@ th{background:var(--soft);font-weight:700}
 .kv dt{color:var(--sub)} .kv dd{margin:0}
 @media (max-width:560px){.kv{grid-template-columns:1fr}.kv dt{margin-top:6px}}
 
-/* 실시간 예약 */
-.cal{max-width:860px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px}
-.cal-h{display:flex;align-items:center;justify-content:center;gap:24px;margin-bottom:16px}
-.cal-h b{font-size:20px;min-width:8em;text-align:center}
-.cal-h button{font:inherit;font-size:20px;background:none;border:1px solid var(--line);border-radius:50%;width:38px;height:38px;cursor:pointer;color:var(--text)}
-.cal-h button:disabled{opacity:.25;cursor:default}
-.wk,.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
-.wk span{font-size:13px;color:var(--sub);text-align:center;padding-bottom:6px}
-.wk span:first-child{color:#c0392b} .wk span:last-child{color:#2c5aa0}
-.d{min-height:86px;border-top:1px solid var(--line);padding:5px 4px;display:grid;align-content:start;gap:3px;min-width:0}
-.d.out{border-top-color:transparent}
-.d .n{font-size:13px}
-.d.today .n{font-weight:700;text-decoration:underline;text-underline-offset:3px}
-.bar{font-size:11.5px;line-height:1.35;padding:2px 5px;border-radius:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bar.ok{color:var(--ok);background:var(--ok-bg)}
-.bar.no{color:var(--no);background:var(--no-bg)}
-.cal-f{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:14px;font-size:12.5px;color:var(--sub)}
-.cal-f i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
-.cal .msg{grid-column:1/-1;padding:40px 0;text-align:center;color:var(--sub)}
-@media (max-width:560px){.cal{padding:12px 8px}.d{min-height:66px}.bar{font-size:10px;padding:1px 2px}.bar .t{display:none}}
-
+/* 실시간 예약 — 예전 아임웹 홈페이지 달력과 같은 모양 */
+#gb-avail{max-width:1100px;margin:0 auto;padding:0 10px;color:#333;-webkit-font-smoothing:antialiased}
+#gb-avail *{box-sizing:border-box}
+#gb-avail .gb-head{display:flex;align-items:center;justify-content:space-between;padding:6px 2px 14px}
+#gb-avail .gb-month{font-size:22px;font-weight:400;letter-spacing:-.01em}
+#gb-avail .gb-nav button{width:34px;height:34px;margin-left:6px;cursor:pointer;background:#fff;border:1px solid #e0e0e0;border-radius:3px;font-size:17px;line-height:1;color:#555}
+#gb-avail .gb-nav button:hover{background:#f6f6f6}
+#gb-avail .gb-week{display:grid;grid-template-columns:repeat(7,1fr);border-top:1px solid #e5e5e5}
+#gb-avail .gb-week span{padding:9px 0;text-align:center;font-size:12px;color:#9a9a9a}
+#gb-avail .gb-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-left:1px solid #ededed;border-top:1px solid #ededed}
+#gb-avail .gb-cell{min-height:104px;padding:6px 5px;background:#fff;border-right:1px solid #ededed;border-bottom:1px solid #ededed;min-width:0}
+#gb-avail .gb-cell.out{background:#fafafa}
+#gb-avail .gb-today{display:inline-block;width:22px;height:22px;line-height:22px;border-radius:50%;background:#363636;color:#fff;text-align:center;font-size:12px;margin-left:-1px}
+#gb-avail .gb-num{font-size:12px;color:#9a9a9a;margin-bottom:5px;padding-left:1px}
+#gb-avail .gb-cell.out .gb-num{color:#cfcfcf}
+#gb-avail .gb-bar{display:block;font-size:11px;line-height:1.45;padding:2px 5px;margin-bottom:3px;border-radius:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.02em}
+#gb-avail .gb-bar.ok{background:#D4EEFA;color:#1d4e63}
+#gb-avail .gb-bar.no{background:#FBD9DB;color:#7d2b31}
+#gb-avail .gb-legend{display:flex;align-items:center;gap:16px;padding:14px 2px 0;font-size:12px;color:#777}
+#gb-avail .gb-legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+#gb-avail .gb-legend i.ok{background:#D4EEFA}
+#gb-avail .gb-legend i.no{background:#FBD9DB}
+#gb-avail .gb-upd{margin-left:auto;color:#bbb}
+#gb-avail .gb-msg{padding:36px 0;text-align:center;color:#999;font-size:13px;grid-column:1/-1}
+@media (max-width:640px){
+  #gb-avail{padding:0}
+  #gb-avail .gb-cell{min-height:86px;padding:4px 3px}
+  #gb-avail .gb-bar{font-size:9.5px;padding:1px 3px;white-space:normal;line-height:1.3}
+  #gb-avail .gb-month{font-size:18px}
+  #gb-avail .gb-today{width:20px;height:20px;line-height:20px;font-size:11px}
+}
 /* 바닥 */
 footer{background:var(--slate);color:var(--on-slate);padding-block:56px 64px;font-size:13px}
 footer .wrap{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;max-width:900px}
@@ -219,7 +229,7 @@ footer .biz small{opacity:.7;letter-spacing:.04em}
 
 <nav class="quick" aria-label="바로가기">
   <a href="#top">▲TOP</a>
-  <a href="https://booking.ddnayo.com/booking-calendar?accommodationId=105962" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M3 17.3V21h3.7L17.8 9.9l-3.7-3.7zM20.7 7a1 1 0 0 0 0-1.4l-2.3-2.3a1 1 0 0 0-1.4 0l-1.8 1.8 3.7 3.7z"/></svg>예약하기</a>
+  <a href="https://map.naver.com/p/entry/place/2013781721?lng=128.6335123&amp;lat=35.8790726&amp;placePath=%2Froom%3Fentry%3Dplt%26from%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26locale%3Dko%26svcName%3Dmap_pcv5%26businessCategory%3Dpension&amp;entry=plt&amp;searchType=place&amp;c=15.00,0,0,0,dh" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M3 17.3V21h3.7L17.8 9.9l-3.7-3.7zM20.7 7a1 1 0 0 0 0-1.4l-2.3-2.3a1 1 0 0 0-1.4 0l-1.8 1.8 3.7 3.7z"/></svg>예약하기</a>
   <a href="https://www.instagram.com/geobok_stay/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2A3.2 3.2 0 1 1 12 8.8a3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM12 2c-2.7 0-3 0-4.1.1-2.6.1-4 1.5-4.1 4.1C3.7 7.3 3.7 7.6 3.7 12s0 4.7.1 5.8c.1 2.6 1.5 4 4.1 4.1 1.1.1 1.4.1 4.1.1s3 0 4.1-.1c2.6-.1 4-1.5 4.1-4.1.1-1.1.1-1.4.1-5.8s0-4.7-.1-5.8c-.1-2.6-1.5-4-4.1-4.1C15 2 14.7 2 12 2z"/></svg>인스타그램</a>
   <a href="https://www.youtube.com/@geobok_stay/shorts" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.8 15.1V8.9L15.6 12z"/></svg>유튜브</a>
 </nav>
@@ -390,18 +400,21 @@ footer .biz small{opacity:.7;letter-spacing:.04em}
           <li>기물·침구·비품 등 파손, 분실, 손상 발생 시 변상 비용을 청구할 수 있습니다.</li>
         </ul></div></details>
       </div>
-      <div class="center"><a class="pill" href="https://booking.ddnayo.com/booking-calendar?accommodationId=105962" target="_blank" rel="noopener">동의 후 예약하기</a></div>
+      <div class="center"><a class="pill" href="https://map.naver.com/p/entry/place/2013781721?lng=128.6335123&amp;lat=35.8790726&amp;placePath=%2Froom%3Fentry%3Dplt%26from%3Dmap%26fromPanelNum%3D1%26additionalHeight%3D76%26locale%3Dko%26svcName%3Dmap_pcv5%26businessCategory%3Dpension&amp;entry=plt&amp;searchType=place&amp;c=15.00,0,0,0,dh" target="_blank" rel="noopener">동의 후 예약하기</a></div>
     </div>
   </section>
 
   <section id="live">
     <div class="wrap">
       <div class="title" style="justify-items:center;text-align:center"><p class="en">실시간 예약</p><p>예약 가능한 날을 확인하신 뒤 예약하기에서 예약해 주세요.</p></div>
-      <div class="cal">
-        <div class="cal-h"><button id="gb-prev" type="button" aria-label="이전 달">‹</button><b id="gb-title">—</b><button id="gb-next" type="button" aria-label="다음 달">›</button></div>
-        <div class="wk"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div>
-        <div class="days" id="gb-grid"></div>
-        <div class="cal-f"><span><i style="background:var(--ok-bg);border:1px solid var(--ok)"></i>예약가능</span><span><i style="background:var(--no-bg);border:1px solid var(--no)"></i>예약완료</span><span id="gb-upd"></span></div>
+      <div id="gb-avail">
+        <div class="gb-head">
+          <div class="gb-month"><span id="gb-title"></span></div>
+          <div class="gb-nav"><button type="button" id="gb-prev" aria-label="이전 달">‹</button><button type="button" id="gb-next" aria-label="다음 달">›</button></div>
+        </div>
+        <div class="gb-week"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div>
+        <div class="gb-grid" id="gb-grid"></div>
+        <div class="gb-legend"><span><i class="ok"></i>예약가능</span><span><i class="no"></i>예약완료</span><span class="gb-upd" id="gb-upd"></span></div>
       </div>
       <div class="center" style="display:flex;justify-content:center;margin-top:28px"><a class="pill" href="https://booking.ddnayo.com/booking-calendar?accommodationId=105962" target="_blank" rel="noopener">예 약 하 기</a></div>
     </div>
@@ -451,34 +464,38 @@ footer .biz small{opacity:.7;letter-spacing:.04em}
     box.querySelectorAll('button[data-c]').forEach(function(b){ b.onclick=function(){ open(G[fl][b.dataset.c], +(b.dataset.i||0), NAME[fl]+' · '+b.dataset.c); }; });
   });
 
-  /* 실시간 예약: 예약장부 캘린더 → 기존 아임웹과 같은 주소(Apps Script) */
+  /* 실시간 예약: 예전 아임웹 홈페이지 달력 코드 그대로 (예약장부 캘린더 → Apps Script) */
   var API_URL='https://script.google.com/macros/s/AKfycbzy3dGVm2LohWkopXOVP2qxFWZ7Sk0LgSuBE30wfAXHDNPr6FSe3NZgzN36UNK8MFfI/exec';
-  var FLOORS=['1F','2F'], LABEL={'1F':'1층 온휴','2F':'2층 현온'};
-  var grid=document.getElementById('gb-grid'), title=document.getElementById('gb-title'), upd=document.getElementById('gb-upd'), data=null, failMsg='';
-  var now=new Date(), mon=new Date(now.getFullYear(),now.getMonth(),1), MIN=new Date(mon);
+  var LABEL={'1F':'1층 온휴','2F':'2층 현온'}, FLOORS=['1F','2F'];
+  var grid=document.getElementById('gb-grid'), title=document.getElementById('gb-title'), upd=document.getElementById('gb-upd');
+  var data=null, cur=new Date(); cur=new Date(cur.getFullYear(),cur.getMonth(),1); var MIN=new Date(cur.getFullYear(),cur.getMonth(),1);
   function pad(n){return (n<10?'0':'')+n} function key(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
   function render(){
-    title.textContent=mon.getFullYear()+'년 '+(mon.getMonth()+1)+'월';
-    document.getElementById('gb-prev').disabled=mon.getTime()<=MIN.getTime();
-    var start=new Date(mon); start.setDate(1-mon.getDay()); var tk=key(new Date()), h='';
+    title.textContent=cur.getFullYear()+'년 '+(cur.getMonth()+1)+'월';
+    var pv=document.getElementById('gb-prev'); pv.disabled=(cur.getTime()<=MIN.getTime()); pv.style.opacity=pv.disabled?'.25':''; pv.style.cursor=pv.disabled?'default':'pointer';
+    if(!data){ grid.innerHTML='<div class="gb-msg">예약현황을 불러오는 중입니다…</div>'; return; }
+    if(data.error){ grid.innerHTML='<div class="gb-msg">예약현황을 불러오지 못했습니다.</div>'; return; }
+    var first=new Date(cur.getFullYear(),cur.getMonth(),1), start=new Date(first); start.setDate(1-first.getDay());
+    var todayKey=key(new Date()), html='';
     for(var i=0;i<42;i++){
-      var d=new Date(start.getFullYear(),start.getMonth(),start.getDate()+i), k=key(d), out=d.getMonth()!==mon.getMonth();
-      if(i>=35 && out) break;
-      h+='<div class="d'+(out?' out':'')+(k===tk?' today':'')+'"><span class="n">'+(out?'':d.getDate())+'</span>';
-      if(!out && data && !data.error && k>=data.from && k<=data.to){ var b=data.booked[k]||{};
-        FLOORS.forEach(function(f){ var taken=k<tk||!!b[f]; h+='<span class="bar '+(taken?'no':'ok')+'">'+LABEL[f].slice(0,2)+'<span class="t"> '+LABEL[f].slice(3)+' '+(taken?'예약완료':'예약가능')+'</span></span>'; }); }
-      h+='</div>';
+      var d=new Date(start.getFullYear(),start.getMonth(),start.getDate()+i), k=key(d), out=d.getMonth()!==cur.getMonth();
+      html+='<div class="gb-cell'+(out?' out':'')+(k===todayKey?' today':'')+'"><div class="gb-num">'+(k===todayKey?'<span class="gb-today">'+d.getDate()+'</span>':d.getDate())+'</div>';
+      if(!out && k>=data.from && k<=data.to){ var b=data.booked[k]||{};
+        for(var f=0;f<FLOORS.length;f++){ var fl=FLOORS[f], taken=(k<todayKey)?true:!!b[fl]; html+='<span class="gb-bar '+(taken?'no':'ok')+'">'+LABEL[fl]+' '+(taken?'예약완료':'예약가능')+'</span>'; } }
+      html+='</div>';
+      if(i>=34 && d.getMonth()!==cur.getMonth() && d.getDay()===6) break;
     }
-    if(!data) h+='<div class="msg">'+(failMsg||'예약현황을 불러오는 중입니다…')+'</div>';
-    grid.innerHTML=h; upd.textContent=data&&data.updated?'기준 '+data.updated:'';
+    grid.innerHTML=html; upd.textContent=data.updated?'기준 '+data.updated:'';
   }
-  document.getElementById('gb-prev').onclick=function(){ if(mon.getTime()<=MIN.getTime()) return; mon=new Date(mon.getFullYear(),mon.getMonth()-1,1); render(); };
-  document.getElementById('gb-next').onclick=function(){ mon=new Date(mon.getFullYear(),mon.getMonth()+1,1); render(); };
-  function ok(r){ data=r; render(); }
-  function fail(){ failMsg='예약현황을 불러오지 못했어요. 예약하기에서 날짜를 확인해 주세요.'; render(); }
-  function jsonp(){ var cb='gbAvail'+Date.now(), done=false; window[cb]=function(r){done=true;ok(r)}; var s=document.createElement('script'); s.src=API_URL+'?callback='+cb; s.onerror=fail; document.body.appendChild(s); setTimeout(function(){ if(!done&&!data) fail(); },8000); }
+  document.getElementById('gb-prev').onclick=function(){ if(cur.getTime()<=MIN.getTime()) return; cur=new Date(cur.getFullYear(),cur.getMonth()-1,1); render(); };
+  document.getElementById('gb-next').onclick=function(){ cur=new Date(cur.getFullYear(),cur.getMonth()+1,1); render(); };
   render();
-  try{ fetch(API_URL).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(ok).catch(jsonp); }catch(e){ jsonp(); }
+  function fail(why){ grid.innerHTML='<div class="gb-msg">예약현황을 불러오지 못했습니다.<br><span style="font-size:11px;color:#bbb">'+why+'</span></div>'; }
+  function ok(res){ data=res; render(); }
+  function tryJsonp(){ var cb='gbAvail'+Date.now(), done=false; window[cb]=function(res){ done=true; ok(res); try{ delete window[cb]; }catch(e){} };
+    var sc=document.createElement('script'); sc.src=API_URL+(API_URL.indexOf('?')<0?'?':'&')+'callback='+cb; sc.onerror=function(){ if(!done) fail('연결 실패'); }; document.body.appendChild(sc);
+    setTimeout(function(){ if(!done&&!data) fail('응답 없음'); },8000); }
+  if(window.fetch){ fetch(API_URL,{method:'GET'}).then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); }).then(ok).catch(function(){ tryJsonp(); }); } else { tryJsonp(); }
 })();
 </script>
 </body>
