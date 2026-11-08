@@ -6,3 +6,6 @@ Cloudflare Workers(정적 파일)로 배포합니다. `wrangler.jsonc`가 `publi
 - `public/img/` — 사진 (webp, `_s`는 갤러리 작은 사진)
 - `public/fonts/` — 넥슨 Lv1 고딕
 - 실시간 예약현황은 예약장부 캘린더를 읽는 Apps Script 주소를 씁니다.
+
+## 문구를 바꾼 뒤
+`python3 tools/subset_fonts.py` 를 실행해 글꼴을 다시 만드세요. (원본 글꼴: `tools/fonts-full/`)
